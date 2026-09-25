@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Islam Berrebiha — Portfolio BTS SIO SISR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1420; --bg-alt:#0f1f30; --panel:#0d1c2b; --line:#1c3348;
+  --text:#d7e3ec; --muted:#7b93a6; --cyan:#4fd1ff; --amber:#ffb454; --green:#3ddc97;
+  --font-h:'Space Grotesk',sans-serif; --font-b:'IBM Plex Sans',sans-serif; --font-m:'IBM Plex Mono',monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0); padding-bottom:env(safe-area-inset-bottom,0);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.6;background-image:
+  linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;background-position:-1px -1px;background-attachment:fixed;background-color:var(--bg)}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(79,209,255,.07),transparent 60%);pointer-events:none;z-index:0}
+a{color:var(--cyan)}
+h1,h2,h3{font-family:var(--font-h);margin:0 0 .4em;font-weight:700;color:#fff}
+::selection{background:var(--cyan);color:#031018}
+
+header{position:sticky;top:0;top:env(safe-area-inset-top,0);z-index:10;background:rgba(10,20,32,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.topbar{max-width:960px;margin:0 auto;padding:14px 20px 0;font-family:var(--font-m);font-size:.85rem;color:var(--muted)}
+.topbar b{color:var(--green)}
+nav{max-width:960px;margin:0 auto;display:flex;gap:2px;padding:10px 16px 0;overflow-x:auto}
+nav button{font-family:var(--font-m);font-size:.82rem;background:var(--panel);color:var(--muted);border:1px solid var(--line);border-bottom:none;padding:9px 14px;border-radius:6px 6px 0 0;cursor:pointer;white-space:nowrap}
+nav button:hover{color:var(--text)}
+nav button[aria-selected="true"]{color:var(--cyan);background:var(--bg-alt);border-color:var(--cyan)}
+nav button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+
+main{max-width:960px;margin:0 auto;padding:0 20px 60px;position:relative;z-index:1}
+.win{background:var(--bg-alt);border:1px solid var(--line);border-radius:0 8px 8px 8px;margin-top:0;overflow:hidden}
+.win-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--font-m);font-size:.78rem;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dot.r{background:#ff5f56}.dot.y{background:#ffbd2e}.dot.g{background:#27c93f}
+.win-body{padding:32px clamp(18px,4vw,44px)}
+section{display:none}
+section.active{display:block}
+
+.tag{font-family:var(--font-m);font-size:.75rem;color:var(--cyan);border:1px solid var(--cyan);padding:3px 9px;border-radius:4px;display:inline-block}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.lede{color:var(--muted);max-width:60ch;font-size:1.05rem}
+.prompt{font-family:var(--font-m);color:var(--green);font-size:.85rem}
+.prompt .path{color:var(--cyan)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+@media (max-width:640px){.grid2{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:8px;padding:16px 18px;background:rgba(255,255,255,.015)}
+.card h3{font-size:1rem;color:var(--cyan)}
+.card p{color:var(--muted);font-size:.92rem;margin:0}
+
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:.92rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-family:var(--font-m);font-weight:500;font-size:.8rem}
+
+.timeline{border-left:2px solid var(--line);margin:22px 0 0 6px;padding-left:22px}
+.tl-item{position:relative;padding-bottom:26px}
+.tl-item::before{content:"";position:absolute;left:-28px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--cyan)}
+.tl-item .when{font-family:var(--font-m);font-size:.78rem;color:var(--amber)}
+.tl-item h3{font-size:1rem;margin:4px 0 4px}
+.tl-item p{color:var(--muted);margin:0;font-size:.92rem}
+
+.feed-item{border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-top:14px;display:block;text-decoration:none;color:inherit;transition:border-color .15s}
+.feed-item:hover{border-color:var(--cyan)}
+.feed-item .meta{font-family:var(--font-m);font-size:.75rem;color:var(--amber);margin-bottom:6px}
+.feed-item h3{font-size:1rem;margin-bottom:6px}
+.feed-item p{color:var(--muted);margin:0;font-size:.92rem}
+.feed-item .src{font-family:var(--font-m);font-size:.75rem;color:var(--cyan);margin-top:10px;display:block}
+
+.skillbar{margin:10px 0}
+.skillbar .lbl{display:flex;justify-content:space-between;font-family:var(--font-m);font-size:.78rem;color:var(--muted);margin-bottom:4px}
+.skillbar .bg{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.skillbar .fg{height:100%;background:var(--cyan)}
+
+form{margin-top:22px;display:grid;gap:14px;max-width:480px}
+label{font-family:var(--font-m);font-size:.78rem;color:var(--muted);display:block;margin-bottom:5px}
+input,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--text);padding:10px 12px;font-family:var(--font-b);font-size:.95rem}
+input:focus,textarea:focus{outline:2px solid var(--cyan);outline-offset:1px}
+button.submit{font-family:var(--font-m);background:var(--cyan);color:#031018;border:none;padding:11px 18px;border-radius:6px;cursor:pointer;font-weight:500;width:max-content}
+.contact-links{display:flex;gap:18px;margin-top:22px;flex-wrap:wrap;font-family:var(--font-m);font-size:.88rem}
+
+footer{text-align:center;color:var(--muted);font-family:var(--font-m);font-size:.78rem;padding:26px 20px 40px}
+
+@media (prefers-reduced-motion:no-preference){section.active{animation:fade .35s ease}}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar"><b>islam@sisr</b>:~$ <span id="crumb">./presentation.sh</span></div>
+  <nav id="tabs">
+    <button data-t="presentation" aria-selected="true">presentation</button>
+    <button data-t="bts">bts-sio-sisr</button>
+    <button data-t="projet">projet-technique</button>
+    <button data-t="cv">cv</button>
+    <button data-t="veille">veille-techno</button>
+    <button data-t="contact">contact</button>
+  </nav>
+</header>
+
+<main>
+  <div class="win">
+    <div class="win-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span id="winpath">~/portfolio/presentation.sh</span></div>
+    <div class="win-body">
+
+      <section id="presentation" class="active">
+        <p class="prompt">$ whoami</p>
+        <h1>Islam Berrebiha</h1>
+        <p class="lede">Étudiant en BTS SIO, option SISR (Solutions d'Infrastructure, Systèmes et Réseaux). Je m'intéresse à l'administration des systèmes, aux réseaux d'entreprise et à la sécurité informatique — et j'aime comprendre ce qui se passe derrière l'écran, jusqu'au câble.</p>
+        <div class="tags">
+          <span class="tag">Windows Server</span><span class="tag">Linux</span><span class="tag">Active Directory</span>
+          <span class="tag">Réseaux &amp; VLAN</span><span class="tag">Virtualisation</span><span class="tag">Sécurité</span>
+        </div>
+        <div class="grid2">
+          <div class="card"><h3>Parcours</h3><p>Après un Bac général spécialités Mathématiques et Sciences de l'Ingénieur et une première année de licence Mathématiques-Informatique, je prépare le BTS SIO SISR au lycée Marie Curie, à Marseille.</p></div>
+          <div class="card"><h3>Ce que je cherche</h3><p>Un stage en administration systèmes et réseaux, avec une vraie exposition à la production.</p></div>
+        </div>
+      </section>
+
+      <section id="bts">
+        <p class="prompt">$ cat option-sisr.md</p>
+        <h1>Le BTS SIO, option SISR</h1>
+        <p class="lede">Le BTS Services Informatiques aux Organisations forme en deux ans à la gestion des systèmes d'information. L'option SISR se concentre sur l'infrastructure : serveurs, réseaux, sécurité et continuité de service.</p>
+        <p class="prompt" style="margin-top:8px">$ echo $ETABLISSEMENT</p>
+        <p class="lede" style="margin-top:2px">Lycée Marie Curie, à Marseille — 2025 à 2027.</p>
+        <table>
+          <tr><th>Bloc</th><th>Contenu</th></tr>
+          <tr><td>Support &amp; mise à disposition</td><td>Déploiement, supervision et maintenance du parc informatique</td></tr>
+          <tr><td>Cybersécurité</td><td>Sécurisation des accès, des flux et des données de l'infrastructure</td></tr>
+          <tr><td>Projet d'infrastructure</td><td>Conception et déploiement d'une solution réseau en équipe</td></tr>
+          <tr><td>Administration système</td><td>Windows Server, Linux, annuaire, virtualisation</td></tr>
+        </table>
+        <div class="grid2">
+          <div class="card"><h3>SISR vs SLAM</h3><p>Là où SLAM développe des logiciels, SISR conçoit et maintient l'infrastructure qui les fait tourner : serveurs, réseaux, sécurité.</p></div>
+          <div class="card"><h3>Débouchés</h3><p>Technicien systèmes et réseaux, administrateur infrastructure, technicien support N2, poursuite en licence pro ou école d'ingénieur.</p></div>
+        </div>
+      </section>
+
+      <section id="projet">
+        <p class="prompt">$ ./deploy-infra.sh --env prod</p>
+        <h1>Projet technique</h1>
+        <h3 style="color:var(--amber);font-family:var(--font-m);font-weight:400;font-size:.95rem">Sécurisation et segmentation d'une infrastructure réseau PME</h3>
+        <p class="lede">Refonte du réseau d'une petite structure pour séparer les usages, filtrer les flux et reprendre la main sur les accès administrateur.</p>
+        <div class="grid2">
+          <div class="card"><h3>Contexte</h3><p>Un réseau plat, sans VLAN ni pare-feu dédié, où postes utilisateurs et serveurs partageaient le même segment.</p></div>
+          <div class="card"><h3>Objectifs</h3><p>Segmenter par VLAN, mettre en place un pare-feu, centraliser l'authentification et journaliser les accès.</p></div>
+        </div>
+        <table>
+          <tr><th>Brique</th><th>Réalisation</th></tr>
+          <tr><td>Réseau</td><td>VLAN par service, routage inter-VLAN sur switch manageable</td></tr>
+          <tr><td>Sécurité</td><td>Pare-feu pfSense, règles de filtrage par VLAN, VPN pour l'administration distante</td></tr>
+          <tr><td>Annuaire</td><td>Active Directory sous Hyper-V, GPO de durcissement des postes</td></tr>
+          <tr><td>Supervision</td><td>Monitoring des équipements avec alertes sur incident</td></tr>
+        </table>
+        <p class="lede" style="margin-top:18px">Résultat : un réseau segmenté, des accès tracés, et une base réutilisable pour les projets suivants du BTS.</p>
+      </section>
+
+      <section id="cv">
+        <p class="prompt">$ less cv.txt</p>
+        <h1>CV</h1>
+        <div class="timeline">
+          <div class="tl-item"><span class="when">2025 — 2027</span><h3>BTS SIO, option SISR</h3><p>Lycée Marie Curie, Marseille.</p></div>
+          <div class="tl-item"><span class="when">2024 — 2025</span><h3>Licence 1 Mathématiques-Informatique</h3><p>Première année de licence.</p></div>
+          <div class="tl-item"><span class="when">2024</span><h3>Baccalauréat général</h3><p>Spécialités Mathématiques et Sciences de l'Ingénieur.</p></div>
+        </div>
+        <h3 style="margin-top:8px">Compétences techniques</h3>
+        <div class="skillbar"><div class="lbl"><span>Administration Windows Server</span><span>Intermédiaire</span></div><div class="bg"><div class="fg" style="width:56%"></div></div></div>
+        <div class="skillbar"><div class="lbl"><span>Réseaux &amp; VLAN</span><span>Intermédiaire</span></div><div class="bg"><div class="fg" style="width:52%"></div></div></div>
+        <div class="skillbar"><div class="lbl"><span>Linux</span><span>Intermédiaire</span></div><div class="bg"><div class="fg" style="width:60%"></div></div></div>
+        <div class="skillbar"><div class="lbl"><span>Sécurité (pare-feu, VPN)</span><span>Intermédiaire</span></div><div class="bg"><div class="fg" style="width:55%"></div></div></div>
+        <p style="margin-top:22px"><a href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtT2JsaXF1ZSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyA5IDAgUiAvTWVkaWFCb3ggWyAwIDAgNTk1LjI3NTYgODQxLjg4OTggXSAvUGFyZW50IDggMCBSIC9SZXNvdXJjZXMgPDwKL0ZvbnQgMSAwIFIgL1Byb2NTZXQgWyAvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJIF0KPj4gL1JvdGF0ZSAwIC9UcmFucyA8PAoKPj4gCiAgL1R5cGUgL1BhZ2UKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL1BhZ2VNb2RlIC9Vc2VOb25lIC9QYWdlcyA4IDAgUiAvVHlwZSAvQ2F0YWxvZwo+PgplbmRvYmoKNyAwIG9iago8PAovQXV0aG9yIChcKGFub255bW91c1wpKSAvQ3JlYXRpb25EYXRlIChEOjIwMjYwOTI0MTY0MjAwKzAwJzAwJykgL0NyZWF0b3IgKFwodW5zcGVjaWZpZWRcKSkgL0tleXdvcmRzICgpIC9Nb2REYXRlIChEOjIwMjYwOTI0MTY0MjAwKzAwJzAwJykgL1Byb2R1Y2VyIChSZXBvcnRMYWIgUERGIExpYnJhcnkgLSBcKG9wZW5zb3VyY2VcKSkgCiAgL1N1YmplY3QgKFwodW5zcGVjaWZpZWRcKSkgL1RpdGxlIChcKGFub255bW91c1wpKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0NvdW50IDEgL0tpZHMgWyA1IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKOSAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAxMDE1Cj4+CnN0cmVhbQpHYXRtOjkyalMhJkFJPS9tJjpGNzBVPTljRUBZUWRSbmFTZ20qXE5aX0Bbbyoub2BxYnJWJ1NIJiJHT2xKNzE0IS0qT11RbUMvLjRKPClxU2BrMkY2Yy9BQVUhMjVLWyIoPDcnQ15DIUBvPFVmTTQlJjplI3UoW25TOVVQbitlRCcrazZEOz4rYUFHTVpbZFFyLXRgalJSZ3VHRC9Mc3RcKCs8IWxfMl5sKlM5Zy1VYChGW2gqRTdfQGlEXl4/WUxLWzZKRiFjTyVyZW5kJTcrOlhEXT5vJ2cmVC5RUW5uLzVeaEpDPSphNEIzT0tFcVRhTF1pTk9MZ2kvVGtpXjlLbGg5XyNrUnBzYnIqZXFhVTZnUWNsZTZCQkpyTz5DUVxoT2QuKDY9TTcpWnNgJFlsXihiQidoYSNvO0pLRjsnX2FARUVKVkgzUGdIa2JbaitoYDhgOzArLnM7XTgsYCkqam5mJWxtU0JiKV9mTzxnTTQ4J3JCWVtnbzEoWFxRXEBXXTZQWXEsdW1nYHJWaFIsSTxoOTdYIypyYCxCZ21fNC5oSSxaR0hBMyktNFlHWENLZ0JoV11XOVssS2FtOEd0L1dkJXJxZjBWcFQtUzQyMExIIVBIRFJsLlEvcDA3KiJTTT8kKmw0Lz0sZHNyKkdBInQ9QSlCOThwJ1c8LiFBJzNHbTE7OGFSVHVzNFctIUQuQnFVVTZPN0JNInNaOHJvZmxhXjAkU3EzRiQyYjFTNmAkM01yK1c9amFNQWdDIT5NSHVNaVhpLDo0M2EkPTwsSDl1NUFsJVIrakg5cFxxNj8naXIpK3FQVVA0UHJJNDtzR2NPYS1TV0NNPWhObWlUXW1eO2teXDwiOVxHNFdOR0c5bygyJkpgc2loVjpGR04rPFJmMDApMW1ZTnUuOmRUIUIoLytDNDxbdDVPZydDYi9oaidlWCsiQmdYcSdGY0g0S2lmMixrPkQyPGx0WllRRFYkYkBhZUFUU05VaGc6UzlbZWs5X2ZsO0RhSSglUEVNYWomWj1jLlhXcl5SXmRFK1Y0NU0sKWRiKD9aMTVtVTkzaGEza0FVXzllKmFuJ28mczc4TE4qJzM0P1txO0U7JCEySDFoRTZdOGRbXCghIkwwUi5zOD4xUk5SVGksLlBLVU1XYl06XWRFSV9bVkguJ3AoSFdAcjI3TDxXXXBJWmltbUIkMmpMQGhnTjVrPEldcnREY005Iy9AYlpeKyNyTHJodGs2IUl0LjojTkkvcFkzM045ImVvZiciW2hwMm0nND5AIi5oK1pySGYmTThDMmtJYUMoUWpMPW9HTD4hcjFsT0FYUltUR15rOXRjNiNjZUI4Nn4+ZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDYxIDAwMDAwIG4gCjAwMDAwMDAxMTIgMDAwMDAgbiAKMDAwMDAwMDIxOSAwMDAwMCBuIAowMDAwMDAwMzMxIDAwMDAwIG4gCjAwMDAwMDA0NDYgMDAwMDAgbiAKMDAwMDAwMDY0OSAwMDAwMCBuIAowMDAwMDAwNzE3IDAwMDAwIG4gCjAwMDAwMDA5OTcgMDAwMDAgbiAKMDAwMDAwMTA1NiAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzxhOTU2ZjZjMzcwNTJkMTBhODJiMmZlNWEwMmE4NDg5Yj48YTk1NmY2YzM3MDUyZDEwYTgyYjJmZTVhMDJhODQ4OWI+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDcgMCBSCi9Sb290IDYgMCBSCi9TaXplIDEwCj4+CnN0YXJ0eHJlZgoyMTYyCiUlRU9GCg==" download="CV_Islam_Berrebiha.pdf" style="font-family:var(--font-m);font-size:.88rem;color:var(--bg);background:var(--cyan);padding:10px 16px;border-radius:6px;text-decoration:none;display:inline-block">↓ Télécharger mon CV (PDF)</a></p>
+      </section>
+
+      <section id="veille">
+        <p class="prompt">$ tail -f flux-actu.log</p>
+        <h1>Veille technologique</h1>
+        <p class="lede">Je suis en ce moment l'arrivée du Wi-Fi 7 (norme 802.11be) et ce qu'elle change pour les réseaux sans fil d'entreprise.</p>
+        <a class="feed-item" href="https://selectra.info/telecom/guides/technologies/wifi-7" target="_blank" rel="noopener"><div class="meta">NORME</div><h3>Le Wi-Fi 7 (802.11be), c'est quoi ?</h3><p>Successeur du Wi-Fi 6/6E, il ajoute la bande 6 GHz, des canaux plus larges (jusqu'à 320 MHz) et vise un débit théorique bien supérieur au Wi-Fi 6.</p><span class="src">selectra.info ↗</span></a>
+        <a class="feed-item" href="https://www.purple.ai/fr-fr/guides/multi-link-operation-mlo-dans-le-wi-fi-7-fonctionnement-et-importance" target="_blank" rel="noopener"><div class="meta">TECHNIQUE</div><h3>Multi-Link Operation (MLO), la vraie nouveauté</h3><p>Un appareil peut désormais émettre et recevoir simultanément sur plusieurs bandes, ce qui réduit fortement la latence et améliore la stabilité de la connexion.</p><span class="src">purple.ai ↗</span></a>
+        <a class="feed-item" href="https://www.purple.ai/fr-fr/guides/wifi-7-802-11be-explained-enterprise" target="_blank" rel="noopener"><div class="meta">INFRASTRUCTURE</div><h3>Quel intérêt pour un réseau d'entreprise ?</h3><p>Un vrai gain pour les usages temps réel (voix, visio, IoT) et les environnements denses, mais un déploiement qui suppose des points d'accès et un câblage compatibles.</p><span class="src">purple.ai ↗</span></a>
+      </section>
+
+      <section id="contact">
+        <p class="prompt">$ mail -s "contact"</p>
+        <h1>Contact</h1>
+        <p class="lede">Une question, une opportunité d'alternance ou de stage ? N'hésitez pas à me contacter.</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Message envoyé';">
+          <div><label for="n">Nom</label><input id="n" required></div>
+          <div><label for="e">Email</label><input id="e" type="email" required></div>
+          <div><label for="m">Message</label><textarea id="m" rows="5" required></textarea></div>
+          <button class="submit" type="submit">Envoyer le message</button>
+        </form>
+        <div class="contact-links">
+          <a href="mailto:islamberrebiha5@gmail.com">islamberrebiha5@gmail.com</a>
+          <a href="https://www.linkedin.com/in/islam-berrebiha-010206384/" target="_blank" rel="noopener">linkedin.com/in/islam-berrebiha</a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <footer>Portfolio BTS SIO SISR — Islam Berrebiha</footer>
+</main>
+
+<script>
+const tabs=document.querySelectorAll('#tabs button');
+const paths={presentation:'presentation.sh',bts:'bts-sio-sisr.md',projet:'deploy-infra.sh',cv:'cv.txt',veille:'flux-actu.log',contact:'contact.sh'};
+function show(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('active',s.id===id));
+  tabs.forEach(b=>b.setAttribute('aria-selected',b.dataset.t===id));
+  document.getElementById('winpath').textContent='~/portfolio/'+paths[id];
+  document.getElementById('crumb').textContent='./'+paths[id];
+  history.replaceState(null,'','#'+id);
+}
+tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
+show(location.hash.slice(1)&&paths[location.hash.slice(1)]?location.hash.slice(1):'presentation');
+</script>
+</body>
+</html>
